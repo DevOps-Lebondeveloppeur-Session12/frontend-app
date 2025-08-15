@@ -81,13 +81,11 @@ jobs:
             sudo docker pull ${{ env.IMAGE_NAME }}
 
             # Remove the old container if it exists
-            sudo docker rm -f backend-api 
+            sudo docker rm -f frontend-app
 
             # Run the new container with environment variables
             sudo docker run -d \
-              --name backend-api \
-              --network backend-api-net \
-              -p 3001:3001 \
-              -e MONGO_URI=${{ secrets.MONGO_URI }} \
+              --name frontend-app \
+              -p 3000:80 \
               --restart=always \
               ${{ env.IMAGE_NAME }}
