@@ -45,9 +45,6 @@ jobs:
       - name: Clone Source Code
         uses: actions/checkout@v4
 
-      - name: show VITE_API_URL value
-        run: echo ${{ vars.VITE_API_URL }} 
-
       - name: Build Docker image
         run: docker build -t ${{ env.IMAGE_NAME }} --build-arg VITE_API_URL=${{ vars.VITE_API_URL }} .
 
